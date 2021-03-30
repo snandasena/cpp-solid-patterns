@@ -25,14 +25,20 @@ public:
     }
 };
 
+// static polymorphism and it'll check types while compile time
 
 // client code
 template<typename Animal>
-void speak(const Animal &animal)
+void speak(const Animal &animal) // Duck type
 {
     std::cout << "Hello\n";
     animal.speak();
 }
+
+struct Tree
+{
+
+};
 
 
 int main()
@@ -43,5 +49,8 @@ int main()
     Cat cat;
     speak(cat);
 
+    // does not compile
+//    Tree tree;
+//    speak(tree);
     return 0;
 }
