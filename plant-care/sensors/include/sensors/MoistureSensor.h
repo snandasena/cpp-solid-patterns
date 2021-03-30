@@ -11,7 +11,7 @@
 
 #include "caretaker/PlantCaretaker.h"
 
-namespace sensor
+namespace sensors
 {
     class MoistureSensor
     {
@@ -26,13 +26,13 @@ namespace sensor
     public:
         MoistureSensor(const std::chrono::seconds, std::mutex &mtx);
         void subscribe(caretaker::PlantCareTaker &);
-        operator()();
+        void operator()();
 
     private:
         bool isAirTooDry();
         bool isSoilTooDry();
         int getAirMoisture();
-        int getAirSoilMoisture();
+        int getSoilMoisture();
     };
 }
 
