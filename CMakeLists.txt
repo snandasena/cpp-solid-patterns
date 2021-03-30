@@ -7,4 +7,5 @@ project(SOLID)
 
 
 #add_executable(ocp OCP/ocp_with_inheritance_and_polymorphism.cpp)
-add_executable(ocp OCP/ocp_using_templates.cpp)
+#add_executable(ocp OCP/ocp_using_templates.cpp)
+add_executable(ocp OCP/ocp_using_template_specilation.cpp)
