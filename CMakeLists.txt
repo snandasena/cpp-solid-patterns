@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(SOLID)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 #add_subdirectory(plant-care)
 
 #add_executable(main main.cpp)
@@ -10,4 +10,5 @@ set(CMAKE_CXX_STANDARD 20)
 #add_executable(ocp OCP/ocp_with_inheritance_and_polymorphism.cpp)
 #add_executable(ocp OCP/ocp_using_templates.cpp)
 #add_executable(ocp OCP/ocp_using_template_specilation.cpp)
-add_executable(ocp OCP/ocp_using_cpp_concept.cpp OCP/temp.cpp)
+#add_executable(ocp OCP/ocp_using_cpp_concept.cpp )
+add_executable(ocp OCP/ocp_using_decorator_pattern.cpp )
