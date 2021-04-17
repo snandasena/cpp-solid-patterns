@@ -35,4 +35,26 @@ public:
 };
 
 
+template<typename Model>
+class Database2ORMQueryset : public ORMQueryset<Model>
+{
+public:
+    ORMQueryset<Model> &filterObjects(std::string, std::string) const override;
+
+    ORMQueryset<Model> &orderObjects(std::string, std::string) const override;
+
+    std::vector<Model> getObjects() const override;
+
+    unsigned updateObjects() override;
+
+    unsigned deleteObjects() override;
+};
+
+
+int main()
+{
+
+    return 0;
+}
+
 
