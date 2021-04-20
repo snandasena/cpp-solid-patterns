@@ -42,7 +42,7 @@ class D : public B, public C
 public:
     void foo()
     {
-        std::cout << "D\n";
+        std::cout << "D\n"; // otherwise no unique overrider
     }
 };
 
