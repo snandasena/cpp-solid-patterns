@@ -3,6 +3,7 @@ project(SOLID)
 
 set(CMAKE_CXX_STANDARD 20)
 #add_subdirectory(plant-care)
+add_subdirectory(plant-care-better)
 
 #add_executable(main main.cpp)
 
