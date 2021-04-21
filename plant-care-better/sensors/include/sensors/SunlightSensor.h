@@ -19,8 +19,8 @@ namespace sensors
         using TimePoint = decltype(std::chrono::system_clock::now());
 
         const std::chrono::seconds sleepTime;
-        std::mutex mtx;
-        std::set<interfaces::WindowDevice *> device;
+        std::mutex &mtx;
+        std::set<interfaces::WindowDevice *> devices;
 
         std::optional<TimePoint> sunlightOnFrom;
         std::optional<TimePoint> sunlightOffFrom;
@@ -31,7 +31,7 @@ namespace sensors
     public:
         SunlightSensor(const std::chrono::seconds, std::mutex &);
         void subscribe(interfaces::WindowDevice &);
-        void operator()();
+        [[noreturn]] void operator()();
 
     private:
         void updateState(const bool);
