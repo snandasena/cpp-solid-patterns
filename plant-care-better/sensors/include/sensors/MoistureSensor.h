@@ -16,7 +16,7 @@ namespace sensors
     class MoistureSensor
     {
         const std::chrono::seconds sleepTime;
-        std::mutex mtx;
+        std::mutex &mtx;
         std::set<interfaces::WaterDevice *> devices;
 
         const int min = 0;
@@ -24,9 +24,9 @@ namespace sensors
         const int threshold = 3;
 
     public:
-        MoistureSensor(const std::chrono::seconds, std::mutex);
+        MoistureSensor(const std::chrono::seconds, std::mutex&);
         void subscribe(interfaces::WaterDevice &);
-        void operator()();
+        [[noreturn]] void operator()();
 
     private:
         bool isAirTooDry();
