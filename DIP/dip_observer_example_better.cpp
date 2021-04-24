@@ -5,54 +5,61 @@
 #include <iostream>
 #include <set>
 
+class Subscriber;
 
-class WeatherForecast;
-
-class User
+class Forecast
 {
 public:
-    User(WeatherForecast &);
-    void notify();
+    virtual ~Forecast() = default;
+    virtual void subscribe(Subscriber &) = 0;
 };
 
-class WeatherForecast
+class Subscriber
 {
-    std::set<User *> listeners;
+public:
+    virtual ~Subscriber() = default;
+    virtual void notify() = 0;
+};
+
+class WeatherForecast : public Forecast
+{
+    std::set<Subscriber *> subscribers;
 
 public:
-    void subscribe(User &);
-    void update();
-};
 
-
-User::User(WeatherForecast &forecast)
-{
-    forecast.subscribe(*this);
-}
-
-void User::notify()
-{
-    std::cout << "Notified " << this << "\n";
-}
-
-void WeatherForecast::subscribe(User &user)
-{
-    listeners.insert(&user);
-}
-
-void WeatherForecast::update()
-{
-    for (auto &l: listeners)
+    void subscribe(Subscriber &subscriber)
     {
-        l->notify();
+        subscribers.insert(&subscriber);
     }
-}
+
+    void update()
+    {
+        for (auto &s: subscribers)
+        {
+            s->notify();
+        }
+    }
+};
+
+class User : public Subscriber
+{
+public:
+    User(Forecast &forecast)
+    {
+        forecast.subscribe(*this);
+    }
+
+    void notify()
+    {
+        std::cout << "Notified " << this << "\n";
+    }
+};
 
 int main()
 {
     WeatherForecast forecast;
     User user1(forecast), user2(forecast);
     forecast.update();
-    
+
     return 0;
 }
