@@ -3,7 +3,9 @@ project(SOLID)
 
 set(CMAKE_CXX_STANDARD 20)
 #add_subdirectory(plant-care)
-add_subdirectory(plant-care-better)
+# add_subdirectory(plant-care-better)
+
+add_subdirectory(exceptions)
 
 #add_executable(main main.cpp)
 
@@ -32,4 +34,4 @@ add_subdirectory(plant-care-better)
 #add_executable(dip_lamp_better2 DIP/dip_lamp_example_better2.cpp)
 #add_executable(dip_obs_bad DIP/dip_observer_example_bad.cpp)
 #add_executable(dip_obs_better1 DIP/dip_observer_example_better.cpp)
-add_executable(dip_obs_better2 DIP/dip_observer_example_better2.cpp)
+# add_executable(dip_obs_better2 DIP/dip_observer_example_better2.cpp)
